@@ -1,6 +1,7 @@
 /* *** Règles CSS importées *** */
 body {
   font-size: .875rem;
+  padding-bottom: 5rem;
 }
 
 .feather {

@@ -27,6 +27,7 @@
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="<?=URL?>">Accueil</a></li>
+                <li class="breadcrumb-item active" aria-current="page"><a href="index.php?cat=<?= $produit['categorie'] ?>"><?=$produit['categorie']?></a></li>
                 <li class="breadcrumb-item active" aria-current="page"><?=$produit['titre']?></li>
             </ol>
         </nav>
@@ -41,7 +42,7 @@
             <p class="card-text"><?= $produit['description'] ?></p>
             <div class="card">
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Categorie: <?= $produit['categorie'] ?></li>
+                    <li class="list-group-item">Categorie: <a href="index.php?cat=<?= $produit['categorie'] ?>"><?= $produit['categorie'] ?></a></li>
                     <li class="list-group-item">Couleur: <?= $produit['couleur'] ?></li>
                     <li class="list-group-item">Taille: <?= $produit['taille'] ?></li>
                     <li class="list-group-item">Public: <?= $produit['public'] ?></li>
