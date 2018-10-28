@@ -48,7 +48,7 @@
             <a class="btn btn-light" href="<?= URL ?>">Retour au site</a>
         </label>
         <label class="btn btn-secondary">
-            <a class="btn btn-warning" href="?a=deconnect">Déconnexion</a>
+            <a class="btn btn-warning" href="?a=deconnect" data-toggle="tooltip" data-placement="bottom" title="Déconnexion"><i class="fas fa-power-off"></i></a>
         </label>
       </div>
     </nav>
