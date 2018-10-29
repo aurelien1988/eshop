@@ -5,7 +5,7 @@
 
     if (!userAdmin()) {
         header("location:" . URL);
-        exit();
+        exit(); 
     }
 
     if (isset($_GET['a']) && $_GET['a'] == "deconnect") {
