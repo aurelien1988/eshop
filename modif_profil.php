@@ -11,7 +11,9 @@ foreach ($_SESSION['user'] as $key => $value) {
     $info[$key] = htmlspecialchars($value); # nous vérifions que les informations à afficher ne comporte pas d'injections et ne perturberont pas notre service
 }
 
+
 debug($info);
+
 
 
 
@@ -24,7 +26,9 @@ if ($_POST) {
                 # Ici, nous allons utiliser une expression régulière (REGEX). Une REGEX nous permet de vérifier une condition.
                 # la fonction preg_match() nous permet de vérifier si une variable respecte la REGEX rentrée. Elle prend 2 arguments : REGEX + le résultat à vérifier. Elle nous retourne un TRUE/FALSE
 
+
        // $info['pseudo'] = $_POST['pseudo'];
+
 
         if (!$pseudo_verif) # équivaut à dire $pseudo_verif est FALSE
         {
@@ -77,8 +81,6 @@ if ($_POST) {
     }
 
 
-
-
     //debug($_POST);
     if(!empty($_FILES['photo']['name']))
         {
@@ -116,7 +118,7 @@ if ($_POST) {
             $user_photo = $info['photo'];
         }
 
-    
+
             // PLACER LES AUTRES VERIFICATIONS ICI
 
     if (empty($msg)) {
@@ -126,6 +128,7 @@ if ($_POST) {
         {
         $result = $pdo->prepare("SELECT * FROM membre WHERE pseudo = :pseudo");
         $result->bindValue(':pseudo', $_POST['pseudo'], PDO::PARAM_STR);
+
         $result->execute();
 
         $user = $result->fetch();
@@ -142,10 +145,13 @@ if ($_POST) {
         else {
             $result = $pdo->prepare("UPDATE membre SET pseudo= :pseudo, mdp=:mdp, nom=:nom, prenom=:prenom, email=:email, civilite=:civilite, ville=:ville, code_postal=:code_postal, adresse=:adresse, photo=:photo WHERE id_membre = :id_membre");
 
+
             $password_hash = password_hash($_POST['password'], PASSWORD_BCRYPT); 
                     # La fonction password_hash() va nous permettre de crypter sérieusement un mot de passe. Elle prend 2 arguments: le résultat ciblé + la méthode à utiliser
 
+
             $result->bindValue(':pseudo', $_POST['pseudo'], PDO::PARAM_STR);
+
             $result->bindValue(':mdp', $password_hash, PDO::PARAM_STR);
             $result->bindValue(':nom', $_POST['nom'], PDO::PARAM_STR);
             $result->bindValue(':prenom', $_POST['prenom'], PDO::PARAM_STR);
@@ -156,7 +162,9 @@ if ($_POST) {
             $result->bindValue(':id_membre', $info['id_membre'], PDO::PARAM_INT);
 
             $result->bindValue(':code_postal', $_POST['code_postal'], PDO::PARAM_INT);
+
             $result->bindValue(':photo', $user_photo, PDO::PARAM_STR);
+
 
 
             if ($result->execute()) {
@@ -182,6 +190,7 @@ if ($_POST) {
                 
             header("location:index.php");
 
+
             if ($result->execute()) {
                 // $msg .= "<div class='alert alert-success'>Vous êtes bien enregistré.</div>";
                 if(!empty($_FILES['photo']['name']))
@@ -190,21 +199,6 @@ if ($_POST) {
                 }
             //header("location:connexion.php?m=success");
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -237,7 +231,9 @@ echo $msg;
 ?>
      <div class="starter-template">
     <h1><?= $page ?></h1>
+
         <form action="" method="post" enctype="multipart/form-data">
+
             <small class="form-text text-muted">Vos données ne seront pas revendues à des services tiers.</small>
             <?= $msg ?>
             <div class="form-group">
@@ -288,6 +284,7 @@ echo $msg;
                 <input type="text" class="form-control" id="ville" placeholder="Quelle est votre ville ..." name="ville" value="<?= $info['ville'] ?>">
             </div>
 
+
             <div class="form-group">
             <label for="photo">Votre photo</label>
             <?php 
@@ -306,6 +303,7 @@ echo $msg;
             </div>
 
  
+
             <button type="submit" class="btn btn-primary btn-lg btn-block">Valider</button>
         </form>
     </div>
