@@ -8,7 +8,7 @@
     // debug($_POST);
     // debug($_FILES, 2);
 
-    if($_POST)
+    if($_POST) 
     {
         # Je m'occupe du fichier envoyé : une photo !
         if(!empty($_FILES['photo']['name']))

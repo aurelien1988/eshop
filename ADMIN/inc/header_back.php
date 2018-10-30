@@ -5,7 +5,7 @@
 
     if (!userAdmin()) {
         header("location:" . URL);
-        exit();
+        exit(); 
     }
 
     if (isset($_GET['a']) && $_GET['a'] == "deconnect") {
@@ -17,7 +17,7 @@
 
 ?>
 
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -92,6 +92,28 @@
                 </a>
               </li>
             </ul>
+
+            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+              <span>GESTION DES COMMANDES</span>
+              <a class="d-flex align-items-center text-muted" href="#">
+                <span data-feather="plus-circle"></span>
+              </a>
+            </h6>
+            <ul class="nav flex-column mb-2">
+              <li class="nav-item">
+                <a class="nav-link" href="historique_commande.php">
+                  <span data-feather="file-text"></span>
+                  historique des commandes
+                </a>
+              </li>
+            </ul>
+
+
+
+
+
+
+
           </div>
         </nav>
 

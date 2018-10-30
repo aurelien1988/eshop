@@ -3,7 +3,7 @@
     # Définir mon nom de page
     $page = "Liste des produits";
 
-    require_once("inc/header_back.php");
+    require_once("inc/header_back.php"); 
 
     if(isset($_GET['a']) && isset($_GET['id']) && $_GET['a'] == "delete" && is_numeric($_GET['id'])) # la fonction is_numeric() me permet de vérifier que le paramètre rentré est bien un chiffre
     {
