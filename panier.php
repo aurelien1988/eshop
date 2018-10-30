@@ -76,7 +76,7 @@
         if(empty($msg)) { // tout est ok
 
             $id_membre = $_SESSION['user']['id_membre'];
-            $montant = prixTotal();
+            $montant = prixTotalTTC();
     
             $resultat = $pdo -> exec("INSERT INTO commande  (id_membre, montant, date_enregistrement, etat) VALUES ($id_membre, $montant, NOW(), 'en cours de traitement')");
     
@@ -131,17 +131,41 @@
 
                         <td><?= $value['prix'] ?> €</td>
 
-                        <td><?= $value['quantite'] ?></td>
+                        <td>
+                        <form action="" method="post">
+                            <div class="form-group">
+                            <input type="hidden" name="modif_quant">
+                                <select class='form-control form-control-sm'>
+                                <option class="selected"><?=$value['quantite']?></option>
+                                
+                                <?php for ($i=0; $i<=200; $i++) 
+                                    {
+                                        echo "<option>" . $i . "</option>";
+                                    }
+                                ?>
 
-                        <td><?= $value['quantite']*$value['prix'] ?> €</td>
+                                </select>
+                                <input name="modif" id="modif" class="btn btn-primary" type="submit" value="Modifier quantité">
+                            </div>
+                        </form>
+                        </td>
+                        <td>
+                        <?=
+                            $value['quantite']*$value['prix'];
+                        ?> 
+                        €</td>
                         
                         <td><a href="?a=delete&id=<?=$key?>"><i class='fas fa-trash-alt'></i></a></td>
                     </tr>
                 </tbody>
             <?php endforeach; ?>
             <tr>
-                <th colspan="5">Montant total</th>
-                <td><?= number_format(prixTotal(), 2, ',', '.') # la fonction number_format() nous permet de retourner un montant formaté à notre convenance. Elle accepte 1 à 4 paramètres : le nombre visé + définition du nombre de décimales + le séparateur du point décimal + déparateur des milliers ?> €</td> 
+                <th colspan="5">Montant total HT</th>
+                <td><?= number_format(prixTotalHT(), 2, ',', '.') # la fonction number_format() nous permet de retourner un montant formaté à notre convenance. Elle accepte 1 à 4 paramètres : le nombre visé + définition du nombre de décimales + le séparateur du point décimal + déparateur des milliers ?> €</td>
+            </tr>
+                <th colspan="5">Montant total TTC (TVA 20%)</th>
+                <td><?= number_format(prixTotalTTC(), 2, ',', '.')?> €</td> 
+            <tr>
             </tr>
             <tr>
                 <td><a href="?a=truncate"><em>vider le panier</em></a></td>
