@@ -20,11 +20,9 @@
         $info[$key] = htmlspecialchars($value); # nous vérifions que les informations à afficher ne comporte pas d'injections et ne perturberont pas notre service
     }
 
-<<<<<<< HEAD
+
      //debug($info);
-=======
-     debug($info);
->>>>>>> 7f3c956ada09d912e657e04c12850621d9879790
+
 
 
      if(isset($_GET['a']) && isset($_GET['id']) && $_GET['a'] == "delete" && is_numeric($_GET['id'])) # la fonction is_numeric() me permet de vérifier que le paramètre rentré est bien un chiffre
