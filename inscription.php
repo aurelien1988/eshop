@@ -50,6 +50,7 @@ if ($_POST) {
         $email_domain = explode('@', $_POST['email']); # On utilise la function explode() pour exploser un résultat en 2 partie selon le caractère choisit. Elle prend 2 arguments : le caractère ciblé, le résultat à analyser 
 
             // debug($email_domain);
+<<<<<<< HEAD
 
         if (!$email_verif || in_array($email_domain[1], $email_interdits))
             # la fonction in_array() nous permet de vérifier que le résultat ciblé fait bien partie de l'ARRAY ciblé. Elle prends 2 arguments: le résultat à vérifier + le tableau ciblé
@@ -109,6 +110,23 @@ if ($_POST) {
 
 
 
+=======
+
+        if (!$email_verif || in_array($email_domain[1], $email_interdits))
+            # la fonction in_array() nous permet de vérifier que le résultat ciblé fait bien partie de l'ARRAY ciblé. Elle prends 2 arguments: le résultat à vérifier + le tableau ciblé
+        {
+            $msg .= "<div class='alert alert-danger'>Veuillez rentrer un email valide.</div>";
+        }
+
+    } else {
+        $msg .= "<div class='alert alert-danger'>Veuillez rentrer un email.</div>";
+    }
+
+        # Je vérifie que la civilité est valide
+    if (!isset($_POST['civilite']) || ($_POST['civilite'] != "m" && $_POST['civilite'] != "f" && $_POST['civilite'] != "o")) {
+        $msg .= "<div class='alert alert-danger'>Veuillez rentrer votre civilité.</div>";
+    }
+>>>>>>> 7f3c956ada09d912e657e04c12850621d9879790
 
         // PLACER LES AUTRES VERIFICATIONS ICI
 
@@ -121,7 +139,11 @@ if ($_POST) {
         if ($result->rowCount() == 1) {
             $msg .= "<div class='alert alert-danger'>Le pseudo $_POST[pseudo] est déjà pris, veuillez en choisir un autre.</div>";
         } else {
+<<<<<<< HEAD
             $result = $pdo->prepare("INSERT INTO membre (pseudo, mdp, nom, prenom, email, civilite, ville, code_postal, adresse, photo, statut) VALUES (:pseudo, :mdp, :nom, :prenom, :email, :civilite, :ville, :code_postal, :adresse, :photo, 0)");
+=======
+            $result = $pdo->prepare("INSERT INTO membre (pseudo, mdp, nom, prenom, email, civilite, ville, code_postal, adresse, statut) VALUES (:pseudo, :mdp, :nom, :prenom, :email, :civilite, :ville, :code_postal, :adresse, 0)");
+>>>>>>> 7f3c956ada09d912e657e04c12850621d9879790
 
             $password_hash = password_hash($_POST['password'], PASSWORD_BCRYPT); 
                 # La fonction password_hash() va nous permettre de crypter sérieusement un mot de passe. Elle prend 2 arguments: le résultat ciblé + la méthode à utiliser
@@ -136,6 +158,7 @@ if ($_POST) {
             $result->bindValue(':adresse', $_POST['adresse'], PDO::PARAM_STR);
 
             $result->bindValue(':code_postal', $_POST['code_postal'], PDO::PARAM_INT);
+<<<<<<< HEAD
             $result -> bindValue(':photo', $user_photo, PDO::PARAM_STR);
 
             if ($result->execute()) {
@@ -144,6 +167,12 @@ if ($_POST) {
                     {
                         copy($_FILES['photo']['tmp_name'], $chemin_photo);
                     }
+=======
+
+            if ($result->execute()) {
+                    // $msg .= "<div class='alert alert-success'>Vous êtes bien enregistré.</div>";
+
+>>>>>>> 7f3c956ada09d912e657e04c12850621d9879790
                 header("location:connexion.php?m=success");
             }
 
@@ -167,7 +196,11 @@ $civilite = (isset($_POST['civilite'])) ? $_POST['civilite'] : '';
 
     <div class="starter-template">
     <h1><?= $page ?></h1>
+<<<<<<< HEAD
         <form action="" method="post" enctype="multipart/form-data">
+=======
+        <form action="" method="post">
+>>>>>>> 7f3c956ada09d912e657e04c12850621d9879790
             <small class="form-text text-muted">Vos données ne seront pas revendues à des services tiers.</small>
             <?= $msg ?>
             <div class="form-group">
@@ -223,14 +256,22 @@ $civilite = (isset($_POST['civilite'])) ? $_POST['civilite'] : '';
             <label for="photo">Photo du produit</label>
             <input type="file" class="form-control-file" id="photo" name="photo">
 
+<<<<<<< HEAD
            <!-- <?php
+=======
+            <?php
+>>>>>>> 7f3c956ada09d912e657e04c12850621d9879790
 
             if (isset($modif_produit)) {
                 echo "<input name='photo_actuelle' value='$photo' type='hidden'>";
                 echo "<img style='width:25%;' src='" . URL . "/assets/uploads/admin/$photo'>";
             }
 
+<<<<<<< HEAD
             ?>-->
+=======
+            ?>
+>>>>>>> 7f3c956ada09d912e657e04c12850621d9879790
 
         </div>
 
