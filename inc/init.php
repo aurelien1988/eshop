@@ -22,5 +22,6 @@ $seo_description = (!empty($seo_description)) ? $seo_description : "";
 
 //> Déclaration de constantes
 
+# Je me facilite la vie en déclarant en constante le chemin vers mes fichiers ainsi que l'URL de mon site. Si jamais j'appelle ce chemin en dur ou l'URL en dur dans mon site, je n'aurais plus besoin d'aller dans tous mes fichiers modifier les valeurs. Tout ce travail sera contenu dans les constantes déclarées ci-dessus
 define('RACINE', $_SERVER['DOCUMENT_ROOT'] . '/PHP/deveshop/eshop/');
 define('URL', "http://localhost/PHP/deveshop/eshop/");

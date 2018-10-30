@@ -84,10 +84,10 @@
                 <span data-feather="plus-circle"></span>
               </a>
             </h6>
-            <ul class="nav flex-column mb-2">
+            <ul class="nav flex-column">
               <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <span data-feather="file-text"></span>
+                <a class="nav-link active" href="liste_user.php"> <!--lien vers la page liste_user.php-->
+                  <span data-feather="file"></span>
                   Liste des utilisateurs
                 </a>
               </li>
